@@ -28,6 +28,7 @@ class Vehicle{
 		this->model=model;
 		this->year=year;
 		this->type=type;
+		totalVehiclesinfo();
 	}
 	
 //		setter function
@@ -38,7 +39,7 @@ class Vehicle{
 		this->model=model;
 		this->year=year;
 		this->type=type;
-		totalVehiclesingo();
+		totalVehiclesinfo();
 	}
 	
 	
@@ -419,7 +420,7 @@ class VehicleRegistry:public ElectricCar,public FlyingCar,public SportsCar,publi
 						cout<<"------------------------------------"<<endl;
 					}
 				}else{
-					cout<<"There is no Vahicle available on this ID..."<<endl;
+					cout<<"There is no Vahicle registered from this ID..."<<endl;
 					cout<<"------------------------------------"<<endl;
 					break;
 				}
