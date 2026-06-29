@@ -61,7 +61,7 @@ class Vehicle{
 	
 //	static funtion
 
-	static totalVehiclesingo(){
+	static totalVehiclesinfo(){
 		totalVehicles++;
 	}
 	
