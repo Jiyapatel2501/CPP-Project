@@ -406,25 +406,29 @@ class VehicleRegistry:public ElectricCar,public FlyingCar,public SportsCar,publi
 					if(vehicleArr[i]->getType()=="ElectricCar"){
 						((ElectricCar*)vehicleArr[i])->getElectricCarInfo();
 						cout<<"------------------------------------"<<endl;
+						return;
 					}else if(vehicleArr[i]->getType()=="FlyingCar"){
 						((FlyingCar*)vehicleArr[i])->getFlyingCarInfo();
 						cout<<"------------------------------------"<<endl;
+						return;
 					}else if(vehicleArr[i]->getType()=="SportsCar"){
 						((SportsCar*)vehicleArr[i])->getSportsCarInfo();
 						cout<<"------------------------------------"<<endl;
+						return;
 					}else if(vehicleArr[i]->getType()=="Sedan"){
 						((Sedan*)vehicleArr[i])->getSedanInfo();
 						cout<<"------------------------------------"<<endl;
+						return;
 					}else if(vehicleArr[i]->getType()=="SUV"){
 						((SUV*)vehicleArr[i])->getSUVInfo();
 						cout<<"------------------------------------"<<endl;
+						return;
 					}
-				}else{
-					cout<<"There is no Vahicle registered from this ID..."<<endl;
-					cout<<"------------------------------------"<<endl;
-					break;
 				}
+					
 			}
+			cout<<"There is no Vahicle registered from this ID..."<<endl;
+			cout<<"------------------------------------"<<endl;
 		}
 		
 		~VehicleRegistry(){
@@ -447,9 +451,9 @@ int main(){
 		cout<<"Press 2 to View all vehicles"<<endl;
 		cout<<"Press 3 to Search by Id"<<endl;
 		cout<<"Press 4 to Exit"<<endl;
-		cout<<"------------------------------------"<<endl;
 		cout<<"Enter Your Choice :";
 		cin>>choice;
+		cout<<"------------------------------------"<<endl;
 		
 		switch(choice){
 			case 1:
@@ -460,7 +464,7 @@ int main(){
 				cout<<"Press 5 to Add SUV"<<endl;
 				cout<<"Enter Your Choice :";
 				cin>>v_choice;
-				cout<<endl<<"------------------------------------"<<endl;
+				cout<<"------------------------------------"<<endl;
 				
 				switch(v_choice){
 					case 1:
