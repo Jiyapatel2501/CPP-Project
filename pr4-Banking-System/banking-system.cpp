@@ -345,61 +345,83 @@ int main(){
 				cout<<"Enter Account Number : ";
 				cin>>a_num;
 				
+				bool flag=false;
+				
 				for(int i=0;i<index;i++){
 					if(bankarr[i]->acc_num()==a_num){
-						if(bankarr[i]->gettype()=="fixDeposit"){
-							cout<<"You Can't Deposit in Fix Deposit..."<<endl;
-							break;
-						}else{
-							
+						flag=true;
+						if(bankarr[i]->gettype()=="SavingAccount"){
 							cout<<"Enter Amount to Deposit : ";
 							cin>>d_amount;
 							bankarr[i]->deposit(d_amount);
+							cout<<"-------------------------------------"<<endl;
+						}else if(bankarr[i]->gettype()=="checkingAccount"){
+							cout<<"Enter Amount to Deposit : ";
+							cin>>d_amount;
+							((CheckingAccount*)bankarr[i])->deposit(d_amount);
+							cout<<"-------------------------------------"<<endl;
+						}else if(bankarr[i]->gettype()=="fixDeposit"){
+							cout<<"Can't Deposit from Fix Deposit..."<<endl;
+							cout<<"-------------------------------------"<<endl;
+						}else{
+							cout<<"Something is Wrong..."<<endl;
+							cout<<"-------------------------------------"<<endl;
+							break;
 						}
-					}else{
-						cout<<"Account Number Not Found!"<<endl;
+						
 						break;
 					}
 				}
-//				for(int i=0;i<index;i++){
-//					if(bankarr[i]->acc_num()==a_num){
-//						cout<<"Enter Amount to Deposit : ";
-//						cin>>d_amount;
-//						bankarr[i]->deposit(d_amount);
-//					}else{
-//						cout<<"Account Number Not Found!"<<endl;
-//						break;
-//					}
-//				}
+				
+				if(flag==false){
+					cout<<"Account Number Not Found!"<<endl;
+					cout<<"-------------------------------------"<<endl;
+				}
+
 				
 				break;
 			}
 				 	
 			case 4:{
+				
+				cout<<"Enter Account Number : ";
+				cin>>a_num;
+				
+				bool flag=false;
+				
 				for(int i=0;i<index;i++){
-					if(bankarr[i]->gettype()=="SavingAccount"){
-						((SavingsAccount*)bankarr[i])->calculateInterest();
-						((SavingsAccount*)bankarr[i])->getSavingsAccountinfo();
-						cout<<"-------------------------------------"<<endl;
-					}else if(bankarr[i]->gettype()=="checkingAccount"){
-						((CheckingAccount*)bankarr[i])->getCheckingAccountinfo();
-						cout<<"-------------------------------------"<<endl;
-					}else{
-						
-						((FixedDepositAccount*)bankarr[i])->calculateInterest();
-						((FixedDepositAccount*)bankarr[i])->getFixedDepositAccountinfo();
-						cout<<"-------------------------------------"<<endl;
+					if(bankarr[i]->acc_num()==a_num){
+						flag=true;
+						if(bankarr[i]->gettype()=="SavingAccount"){
+							((SavingsAccount*)bankarr[i])->calculateInterest();
+							((SavingsAccount*)bankarr[i])->getSavingsAccountinfo();
+							cout<<"-------------------------------------"<<endl;
+						}else if(bankarr[i]->gettype()=="checkingAccount"){
+							((CheckingAccount*)bankarr[i])->getCheckingAccountinfo();
+							cout<<"-------------------------------------"<<endl;
+						}else{
+							
+							((FixedDepositAccount*)bankarr[i])->calculateInterest();
+							((FixedDepositAccount*)bankarr[i])->getFixedDepositAccountinfo();
+							cout<<"-------------------------------------"<<endl;
+						}
 					}
 				}
+					
+				if(flag==false){
+					cout<<"Account Number Not Found!"<<endl;
+					cout<<"-------------------------------------"<<endl;
+				}
+				
 				break;
 			}
 			
 		
-				default:{
-					cout<<"Exited From System..."<<endl;
-					break;
-				}
-			}		
+			default:{
+				cout<<"Exited From System..."<<endl;
+				break;
+			}
+		}		
 			
 	}while(choice!=5);
 	
