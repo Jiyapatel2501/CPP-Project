@@ -314,6 +314,7 @@ int main(){
 							cout<<"Enter Amount to Withdraw : ";
 							cin>>w_amount;
 							bankarr[i]->withdraw(w_amount);
+							cout<<"Withdrawal Successful...."<<endl;
 							cout<<"-------------------------------------"<<endl;
 						}else if(bankarr[i]->gettype()=="checkingAccount"){
 							cout<<"Enter Amount to Withdraw : ";
