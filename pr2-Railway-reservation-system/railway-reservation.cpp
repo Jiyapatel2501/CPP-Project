@@ -10,10 +10,9 @@ class Train{
 	 	string source;	 
 		string destination;
 		string trainTime;
+		int trainNumber;
 	
 	public:
-		
-		int trainNumber;
 		
 		//static variable
 		static int trainCount;
@@ -39,13 +38,16 @@ class Train{
 		
 		//setter function
 		
-		void inputTrainDetails(int number,string name,string source,string destination,string time){
-			this->trainNumber=number;
+		void inputTrainDetails(string name,string source,string destination,string time){
 			this->trainName=name;
 			this->source=source;
 			this->destination=destination;
 			this->trainTime=time;
 			trainCount++;
+		}
+		
+		void setTrainNumber(int number){
+			this->trainNumber=number;
 		}
 		
 		//getter function
@@ -57,6 +59,10 @@ class Train{
 			
 			cout<<"-----------------------------"<<endl;
 			
+		}
+		
+		int getTrainNumber(){
+			return trainNumber;
 		}
 		
 		//static function
@@ -84,8 +90,9 @@ class RailwaySystem{
 		
 		//1.train add train
 		
-		void addTrain(int number,string name,string source,string destination,string time){
-			trains[totaltrain].inputTrainDetails(number,name,source,destination,time);
+		void addTrain(string name,string source,string destination,string time,int number){
+			trains[totaltrain].inputTrainDetails(name,source,destination,time);
+			trains[totaltrain].setTrainNumber(number);
 			totaltrain++;	
 		}
 		
@@ -101,7 +108,7 @@ class RailwaySystem{
 		
 		void searchTrainByNumber(int number){
 			for(int i=0;i<totaltrain;i++){
-				if(trains[i].trainNumber==number){
+				if(trains[i].getTrainNumber()==number){
 					trains[i].displayTrainDetails();
 					return;
 				}
@@ -148,7 +155,7 @@ int main(){
 				cout<<endl<<"Enter Train timing : ";
 				cin>>time;
 				
-				irctc.addTrain(number,name,source,destination,time);
+				irctc.addTrain(name,source,destination,time,number);
 				break;
 				
 			case 2:
